@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    
+
+    <title>Admin Login</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/hero-slider.css">
+    <link rel="stylesheet" href="static/css/templatemo-main.css">
+    <link rel="stylesheet" href="static/css/owl-carousel.css">
+    <link rel="stylesheet" href="static/css/login.css">
+
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+
+    <script src="static/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    <script src="static/js/carousel.js"></script>
+    
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: auto;
+            background-image: url('static/img/background_login.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+
+        }
+
+        
+        
+    </style>
+</head>
+{% with issue=get_flashed_messages() %} {% if issue %} {% for i in issue %}
+
+<h1 class="issue"> {{i}} </h1>
+{% endfor %} {% endif %} {% endwith %}
+
+<body>
+    <div class="container">
+        <div class= "login-main ">
+            <div class="inputs col-12">
+                <h1 class="heading">login</h1> 
+                <form action="/admin_login" method="post">
+                <input type ="email" name="email" placeholder="Email" class="input col-12"/>
+                <input type ="password" name="password" placeholder="Password" class="input col-12"/>
+                 <h4>Forgotten Password?</h4>
+                <input type="submit" class="button" value="Log In">
+            </form>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>
+        window.jQuery || document.write('<script src="static/js/vendor/jquery-1.11.2.min.js"><\/script>')
+    </script>
+    <script src="static/js/vendor/bootstrap.min.js"></script>
+    <script src="static/js/plugins.js"></script>
+    <script src="static/js/main.js"></script>
+ 
+   
+
+
+</body>
+
+</html>

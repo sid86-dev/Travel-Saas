@@ -1,0 +1,134 @@
+.container{
+    align-items: center;
+}
+
+.heading{
+    font-size: 40px;
+    font-weight: bolder;
+    color: black;
+}
+
+.package{
+    color:orangered;
+    text-align: center;
+}
+
+.pack-name{
+    font-size: 40px;
+    font-weight: bolder
+}
+
+.line{
+    border:1px solid black;
+}
+.form{
+    margin: 40px 100px;
+    
+    padding: 40px;
+    border-radius: 15px;
+    
+}
+
+h1{
+    font-weight: bolder;
+}
+.contents{
+    margin: 20px 0px;
+    color:black;
+    font-weight: 1000;
+}
+
+.img-area{
+    height:30%;
+}
+
+.content{
+    padding-left: 40px;
+    outline: none;
+    border: none;
+    background-color:rgb(0,0,0,0.5);
+    height: 50px;
+    width: 100%;
+    color: white;
+    ;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color:white;
+    opacity: 0.8; /* Firefox */
+  }
+
+  .button-sub{
+    outline: none;
+    width:auto;
+    padding: 15px;
+    background-color: rgba(255, 115, 0, 0.986);
+    color: white;
+    border-radius: 15px;
+    border: none;
+    margin-top: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    align-self: center;
+}
+
+
+@media screen and (max-width:1200px) {
+
+    .container{
+      position: relative;
+    
+    }
+    .form{
+        margin:40px 80px;
+        border-radius: 15px;
+        text-align: center;
+    }
+
+    .contents{
+        
+    }
+}
+
+@media screen and (max-width:800px) {
+
+    .container{
+        position: relative;
+      
+      }
+      .form{
+          margin:40px 40px;
+         
+          
+          border-radius: 15px;
+          text-align: center;
+      }
+}
+
+@media screen and (max-width:500px) {
+
+    .container{
+        position: relative;
+      
+      }
+      .form{
+          margin:40px 0px;
+         
+          
+          border-radius: 15px;
+          text-align: center;
+      }
+}
+
+@media screen and (max-width:400px) {
+
+    .container{
+        position: relative;
+      
+      }
+      .form{
+          margin:40px 0px;
+          border-radius: 15px;
+          text-align: center;
+      }
+}

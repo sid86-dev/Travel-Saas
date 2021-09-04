@@ -1,0 +1,131 @@
+
+.container{
+    align-items: center;
+}
+.login-main{
+    margin:120px 300px;
+    height: 200px;
+    border-radius: 15px;
+    text-align: center;
+}
+.heading{
+    margin-bottom: 25px;
+    font-size: 30px;   
+}
+
+.inputs{
+    background-color:rgb(0,0,0,0.5);
+    padding: 30px 80px;
+    border-radius: 15px;
+    height:500px;
+    color: white;
+   
+    
+}
+
+.input{
+    outline: none;
+    padding: 15px;
+    margin: 20px 0px;
+    background-color: blanchedalmond;
+    border-radius: 15px;
+    border: none;
+}
+
+
+.button{
+    outline: none;
+    width:100%;
+    padding: 15px;
+    background-color: rgb(90, 175, 10);
+    color: white;
+    border-radius: 15px;
+    border: none;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+@media screen and (max-width:1200px) {
+
+    .container{
+      position: relative;
+    
+    }
+    .login-main{
+        margin:120px 80px;
+        border-radius: 15px;
+        text-align: center;
+    }
+
+    .inputs{
+        
+        width: 630px;
+    }
+}
+
+@media screen and (max-width:800px) {
+
+    .container{
+        
+        position: relative;
+    
+    }
+    .login-main{
+        margin:130px 25px;
+        
+        border-radius: 15px;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .inputs{
+       
+        width:auto;
+        padding:40px;
+    }
+}
+
+@media screen and (max-width:500px) {
+
+    .container{
+        
+        position: relative;
+    
+    }
+    .login-main{
+        margin:130px 25px;
+        
+        border-radius: 15px;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .inputs{
+        height:450px;
+        width:auto;
+        padding:10px;
+    }
+}
+
+@media screen and (max-width:400px) {
+
+    .container{
+        
+        position: relative;
+    
+    }
+    .login-main{
+        margin:80px 0px 0px 0px;
+        
+        border-radius: 15px;
+        text-align: center;
+        
+    }
+
+    .inputs{
+        height:auto;
+        width:auto;
+        padding:20px;
+    }
+}
+
