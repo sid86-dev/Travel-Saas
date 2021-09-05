@@ -59,13 +59,12 @@
             </div>
             <div class="row justify-content-center">
                 {% for i in res %}
-                <div class=" cards col-sm-3">
-                    <div class="card shadow-lg" style="width: 20rem ; height: 25rem;">
-                        <a href='/package_details/{{i[1]}}'><img class="card-img-top" src="{{i[4]}}" alt="Card image cap" style="width: 20rem ; height: 20rem;"/></a>
-                            <div class="card-body">
+                <div class=" cards col-lg-3 col-md-6 col-sm-12">
+                    <div class="card " >
+                        <a href='/package_details/{{i[1]}}'><img class="card-img-top" src="{{i[4]}}" alt="Card image cap" /></a>
+                            <div class="card-body ">
                                 <h5 class="card-title align-self-center">{{i[1]}}</h5>
                                 <p class="card-text align-self-center">₹{{i[2]}} per person </p>
-            
                             </div>
                     </div>
                 </div>
