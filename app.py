@@ -151,7 +151,8 @@ def admin_login():
 
 @app.route('/admin_dashboard')
 def admin_dasboard():
-    if session['user']=='admin':
+    #if session['user']=='admin':
+    if 'user' in session:
         pass
     else:
         return render_template("/admin_login.html")
@@ -159,7 +160,7 @@ def admin_dasboard():
 
 @app.route('/admin_citydetails')
 def admin_citydetails():
-    if session['user']=='admin':
+    if 'user' in session:
         pass
     else:
         return render_template("/admin_login.html")
