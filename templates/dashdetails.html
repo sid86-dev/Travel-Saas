@@ -122,7 +122,7 @@
             <div class="list-group list-group-flush my-3">
                 <a href="#" class="list-group-item list-group-item-action bg-transparent second-text active"><i
                         class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
-                <a href="/admin_citydetails" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                <a href="/admin_city" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-map-marker-alt me-2"></i>City</a>
                 <a href="/admin_dashboard" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-project-diagram me-2"></i>Details</a>
@@ -181,17 +181,24 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                
+                            {% for row in res %}
                                 <tr>
-                                    <th scope="row">1</th>
-                                    <td>Nikhil</td>
-                                    <td>$75,000</td>
-                                    <td>Goa</td>
-                                    <td>NA</td>
-                                    <td>None</td>
-                                    <td>None</td>
-                                    <td><button style="background-color: black; color: azure; border-radius: 5px;">Edit</button>
-                                    <button style="background-color: #ff5757; color: azure; border-radius: 5px;" id="b1">Delete</button></td>
+                                    <th scope="row">{{row[0]}}</th>
+                                    <td>{{row[1]}}</td>
+                                    <td>₹{{row[2]}}</td>
+                                    <td>{{row[3]}}</td>
+                                    <td>{{row[4]}}</td>
+                                    <td>{{row[5]}}</td>
+                                    <td>{{row[6]}}</td>
+                                    <form method="post" action="/packdetails/{{row[0]}}" >
+                                    <td><button style="background-color: black; color: azure; border-radius: 5px;"  name="edit" value="edit">Edit</button>
+                                    <button style="background-color: #ff5757; color: azure; border-radius: 5px;" id="b1" name="delete" value="delete">Delete</button></td>
+                                    </form>
                                 </tr>
+                                
+                            {% endfor %}
+                                <!--
                                 <tr>
                                     <th scope="row">2</th>
                                     <td>Unnati</td>
@@ -249,7 +256,7 @@
                                     <td><button style="background-color: black; color: azure; border-radius: 5px;">Edit</button>
                                     <button style="background-color: #ff5757; color: azure; border-radius: 5px;" id="b1">Delete</button></td>
                                 </tr>
-                                
+                            -->
                             </tbody>
                         </table>
                         
