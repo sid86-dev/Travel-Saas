@@ -7,7 +7,7 @@ from urllib.request import urlopen
 import hashlib
 import MySQLdb
 from datetime import datetime
-from dateutil.relativedelta import relativedelta
+#from dateutil.relativedelta import relativedelta
 
 
 app = Flask(__name__)
