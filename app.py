@@ -7,7 +7,7 @@ from urllib.request import urlopen
 import hashlib
 import MySQLdb
 from datetime import datetime
-#from dateutil.relativedelta import relativedelta
+from dateutil.relativedelta import relativedelta
 
 
 app = Flask(__name__)
@@ -143,7 +143,8 @@ def admin_login():
             return redirect('/admin_login')
         if us=="admin@gmail.com" and password=="admin@123":
             session['user']='admin'
-            return render_template("/dashdetails.html",name=session['user'])
+            return redirect("/admin_dashboard")
+            #return render_template("/dashdetails.html",name=session['user'])
         else:
             flash("Incorrect email/password")
             return redirect('/admin_login')
@@ -151,20 +152,81 @@ def admin_login():
 
 @app.route('/admin_dashboard')
 def admin_dasboard():
-    #if session['user']=='admin':
     if 'user' in session:
-        pass
+        rows=details.query.all()
+        l=[]
+        result=[]
+        for stm in rows:
+            l.extend([stm.id,stm.title,stm.price,stm.location,stm.img,stm.subheading,stm.body])
+            result.append(l)
+            l=[]
     else:
         return render_template("/admin_login.html")
-    return render_template("/dashdetails.html",name=session['user'])
+    return render_template("/dashdetails.html",name=session['user'],res=result)
 
-@app.route('/admin_citydetails')
-def admin_citydetails():
+@app.route('/packdetails/<int:pid>',methods=['POST','GET'])
+def packdetails(pid):
     if 'user' in session:
-        pass
+        if request.form.get("edit"):
+            l=[]
+            stm=details.query.filter_by(id=pid).first()
+            l.extend([stm.id,stm.title,stm.price,stm.location,stm.img,stm.subheading,stm.body])
+            return render_template("/editform_detail.html",res=l)
+        if request.form.get("delete"):
+            row=details.query.filter_by(id=pid).first()
+            db.session.delete(row)
+            db.session.commit()
+            return redirect('/admin_dashboard')
+        return render_template("/dashdetails.html")
     else:
         return render_template("/admin_login.html")
-    return render_template("/admin.html",name=session['user'])
+    #return render_template("/.html",name=session['user'])
+
+@app.route('/admin_city')
+def admin_city():
+    if 'user' in session:
+        rows=city.query.all()
+        l=[]
+        result=[]
+        for stm in rows:
+            l.extend([stm.id,stm.name,stm.img])
+            result.append(l)
+            l=[]
+    else:
+        return render_template("/admin_login.html")
+    return render_template("/admin.html",name=session['user'],res=result)
+
+
+@app.route('/admin_citydetails/<int:pid>',methods=['POST','GET'])
+def admin_citydetails(pid):
+    if 'user' in session:
+        if request.form.get("edit"):
+            l=[]
+            stm=city.query.filter_by(id=pid).first()
+            l.extend([stm.id,stm.name,stm.img])
+            return render_template("/editform_city.html",res=l)
+        if request.form.get("delete"):
+            row=details.query.filter_by(id=pid).first()
+            db.session.delete(row)
+            db.session.commit()
+            return redirect('/admin_city')
+        if request.form.get("new"):
+            return render_template("/add_newcity.html")
+        return render_template("/admin.html")
+    else:
+        return render_template("/admin_login.html")
+    #return render_template("/admin.html",name=session['user'])
+
+@app.route('/admin_addcity',methods=['POST','GET'])
+def admin_addcity():
+    if 'name' in request.form and 'img' in request.form:
+        name= request.form['name']
+        img= request.form['img']
+        row=city(name=name,img=img)
+        db.session.add(row)
+        db.session.commit()
+        return redirect("/admin_city")
+    return render_template("/add_newcity.html")
 
 @app.route('/admin_logout')
 def admin_logout():
