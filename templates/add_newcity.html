@@ -7,24 +7,24 @@
 
     
 
-    <title>edit form</title>
+    <title>Add New city form</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="stylesheet" href="">
-    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/static/css/hero-slider.css">
-    <link rel="stylesheet" href="/static/css/templatemo-main.css">
-    <link rel="stylesheet" href="/static/css/owl-carousel.css">
-    <link rel="stylesheet" href="/static/css/editform.css">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/hero-slider.css">
+    <link rel="stylesheet" href="static/css/templatemo-main.css">
+    <link rel="stylesheet" href="static/css/owl-carousel.css">
+    <link rel="stylesheet" href="static/css/editform.css">
 
 
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
 
-    <script src="/static/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
-    <script src="/static/js/carousel.js"></script>
+    <script src="static/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    <script src="static/js/carousel.js"></script>
     
     <style>
         html,
@@ -43,20 +43,24 @@
 <body>
     <div class="container">
         <div class="form">
-        <h1 class="heading">Edit Form</h1><hr class="line"/>
+            <form method="post" action="/admin_addcity">
+        <h1 class="heading">Add New City</h1><hr class="line"/>
             <div class="form-content">
                 <div class="contents row">
-                    <h4>location </h4><input type="text" class="content" placeholder="location">
+                    <h4>location </h4><input type="text" class="content" name="name" placeholder="location">
                 </div>
                 <div class="contents row">
-                    <h4>image</h4><input type ="text" class="content img-area" placeholder="Drop Image"/><br><button class="button">Upload Image</button>
+                    <h4>image</h4><input type ="text" class="content img-area" name="img" placeholder="Drop Image"/><br><button class="button">Upload Image</button>
                 </div>
                 
                 <div class="contents row">
-                    <button class="button-sub">Save</button>
+                    
+                    <button type="submit" class="button-sub">Save</button>
+                    
                 </div>
 
             </div>
+            </form>
         </div>
         
     </div>
@@ -67,9 +71,9 @@
     <script>
         window.jQuery || document.write('<script src="static/js/vendor/jquery-1.11.2.min.js"><\/script>')
     </script>
-    <script src="/static/js/vendor/bootstrap.min.js"></script>
-    <script src="/static/js/plugins.js"></script>
-    <script src="/static/js/main.js"></script>
+    <script src="static/js/vendor/bootstrap.min.js"></script>
+    <script src="static/js/plugins.js"></script>
+    <script src="static/js/main.js"></script>
  
    
 
