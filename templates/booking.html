@@ -7,7 +7,7 @@
 
     
 
-    <title>edit form</title>
+    <title>Enquiry form</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="/static/css/templatemo-main.css">
     <link rel="stylesheet" href="/static/css/owl-carousel.css">
     <link rel="stylesheet" href="/static/css/booking.css">
+    <link rel="stylesheet" href="static/css/fontAwesome.css">
 
 
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -47,54 +48,54 @@
     <div class="container">
         <div class="form">
             <form action="/booking/{{res[0]}}" method="post">
-        <h1 class="heading">Booking Form</h1><hr class="line"/>
+        <h1 class="heading">Enquiry Form</h1><hr class="line"/>
             <div class="form-content">
                 <div class="package">
                     <h1 class="pack-name">{{res[1]}}</h1>
                     <h3 class="pack-day">{{res[2]}}</h3>
                 </div>
-                {% with issue=get_flashed_messages() %} {% if issue %} {% for i in issue %}
+               <!--  {% with issue=get_flashed_messages() %} {% if issue %} {% for i in issue %}
 
 <h1 class="issue"> {{i}} </h1>
-{% endfor %} {% endif %} {% endwith %}
+{% endfor %} {% endif %} {% endwith %} -->
                 <div class="contents row">
                     <div class="name col-xl-6 col-xs-12">
-                    <h4>first name</h4><input type="text" name="f_name" class="content" placeholder="first name">
+                    <h4>First name</h4><input type="text" name="f_name" class="content" placeholder="First name" required>
                     </div>
                     <div class="name col-xl-6 col-xs-12">
-                    <h4>last name</h4><input type="text" name="l_name" class="content" placeholder="last name">
+                    <h4>Last name</h4><input type="text" name="l_name" class="content" placeholder="Last name" required>
                     </div>
                 </div>
                 <div class="contents row" >
                     <div class="contact col-xl-6 col-sm-12 col-xs-12">
-                        <h4>Email</h4><input type="text" name="email" class="content" placeholder="Email">
+                        <h4>Email</h4><input type="text" name="email" class="content" placeholder="Email" required>
                     </div>
                     <div class="contact col-xl-6 col-sm-12 col-xs-12">
-                        <h4>Phone no.</h4><input type="text" name="phone" class="content" placeholder="Phone no.">
+                        <h4>Phone no.</h4><input type="text" name="phone" class="content" placeholder="Phone no." required>
                     </div>
                 </div>
                 <div class="contents row">    
                     <div class="time col-xl-6 col-sm-12 col-xs-12">
-                        <h4>Departure Time</h4><input type="date" name="dep_date" class="content" placeholder="Departure Time">
+                        <h4>Departure Time</h4><input type="date" name="dep_date" class="content" placeholder="Departure Time" required>
                     </div>
-                    <div class="time col-xl-6 col-sm-12 col-xs-12">
+                    <!-- <div class="time col-xl-6 col-sm-12 col-xs-12">
                         <h4>Arrival Time</h4><input type="date" name="arrive_date" class="content" placeholder="Arrival Time">
-                    </div>
+                    </div> 
                 </div>
-                <div class="contents row">    
+                <div class="contents row">    -->
                     <div class="other col-xl-6 col-sm-12 col-xs-12">
-                        <h4>No. of Passengers</h4><input type="text" name="count" class="content" placeholder="No. of Passengers">
+                        <h4>No. of People</h4><input type="text" name="count" class="content" placeholder="No. of People">
                     </div>
-                    <div class="other col-xl-6 col-sm-12 col-xs-12">
+                    <!-- <div class="other col-xl-6 col-sm-12 col-xs-12">
                         <h4>ID Proof</h4>
                         <select id="pack" class="content" name="pack">
                             <option value="PAN Card">PAN Card</option>
                             <option value="Aadhar Card">Aadhar Card</option>
                         </select>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="contents row col-12">
-                <button class="button-sub"><h3>Pay Now ( $ 450)</h3></button>
+                <button class="button-sub"><h3>Enquiry Now ( $ 450)</h3></button>
                 </div>
 
             </div>

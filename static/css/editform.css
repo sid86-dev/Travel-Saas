@@ -34,8 +34,7 @@ h1{
 
 .content{
     padding-left: 40px;
-    outline: none;
-    border: none;
+    
     background-color:rgb(0,0,0,0.5);
     height: 50px;
     width: 100%;
@@ -48,11 +47,15 @@ h1{
     opacity: 0.8; /* Firefox */
   }
 
+  .button{
+      margin-top: 10px;
+  }
+
   .button-sub{
-    outline: none;
+    outline: transparent !important;
     width:30%;
     padding: 15px;
-    background-color: rgb(29, 94, 235 , 0.4);
+    background-color: rgb(29, 94, 235 , 1);
     color: white;
     border-radius: 15px;
     border: none;
