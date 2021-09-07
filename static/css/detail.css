@@ -1,54 +1,132 @@
-.container{
-    padding-top: 50px ;
-}
+
+
+.bg{
+    background: black !important;
+    transition: 0.75s ease;
+    opacity: 0.9;
+  }
+  
+  .bg.scrolled{
+    background-color: black !important;
+    height: 70px;
+    opacity: 0.9;
+  }
+  
+  .nav-link{
+    
+    margin: 0px 10px;
+    justify-content: space-between;
+    display: inline-block;
+    margin-top: 10px;
+    color:green;
+    text-transform: uppercase;
+    border-radius: 25px;
+  }
+
 
 .row{
     padding: 20px 0px;
     
 }
 
+.top{
+    
+    box-shadow: -2px 26px 59px -24px rgba(0,0,0,0.05);
+    -webkit-box-shadow: -2px 26px 59px -24px rgba(0,0,0,0.05);
+    -moz-box-shadow: -2px 26px 59px -24px rgba(0,0,0,0.05);
+}
+
+.side{
+   
+    width: 90px;
+    padding: 15px 0px 15px 15px ;
+    float:right; 
+    top: 400px;
+    right:0px;
+    background-color: rgb(255, 205, 205);
+    color:rgb(243, 85, 111);
+    position: fixed;
+    border-radius: 15px;
+    box-shadow: tomato;
+}
 .carousel-inner{
     width: 580px;
-    height: 250px;
-    border-radius: 15px;
+    height: 300px;
+    border-radius: 5px;
+    
 }
 
 .carousel-img{
     width: 580px;
-    height: 250px;
+    height: 300px;
 }
 
 .img1{
     width: 420px;
-    height: 250px;
-    border-radius: 15px;
+    height: 300px;
+    border-radius: 5px;
+    float: left;
 }
 
 .img{
-    height: 250;
+    height: 330;
 }
 
 .img2{
     width: 250px;
-    height: 125px ;
-    margin-bottom: 2px;
-    border-radius: 15px;
+    height: 145px ;
+    margin-bottom: 7px;
+    border-radius: 5px;
 }
 
 .img3{
     width: 250px;
-    height: 125px ;
-    margin-top: 2px;
-    border-radius: 15px;
+    height: 145px ;
+    margin-top: 7px;
+    border-radius: 5px;
+    
 }
 
+.similars{
+    padding:40px 20px 60px 20px;
+   border-radius: 15px;
+   margin-bottom: 80px;
+   box-shadow: -4px 2px 53px -10px rgba(0,0,0,0.12);
+-webkit-box-shadow: -4px 2px 53px -10px rgba(0,0,0,0.12);
+-moz-box-shadow: -4px 2px 53px -10px rgba(0,0,0,0.12);
+margin-right: 20px;
 
+
+}
+
+.offers{
+    padding:40px 0px 60px 0px;
+   border-radius: 15px;
+   background-image: linear-gradient(to right,  #00ffcc , #66ffff);
+   margin-left: 30px;
+   margin-bottom: 80px;
+   box-shadow: -4px 2px 53px -10px rgba(0,0,0,0.12);
+-webkit-box-shadow: -4px 2px 53px -10px rgba(0,0,0,0.12);
+-moz-box-shadow: -4px 2px 53px -10px rgba(0,0,0,0.12);
+margin-right: 20px;
+height: 350px;
+
+}
 
 .price{
+    height:350px;
+   padding:0px 40px 0px px;
+   border-radius: 15px;
+   margin-bottom: 80px;
+   box-shadow: -4px 2px 53px -10px rgba(0,0,0,0.12);
+-webkit-box-shadow: -4px 2px 53px -10px rgba(0,0,0,0.12);
+-moz-box-shadow: -4px 2px 53px -10px rgba(0,0,0,0.12);
 
-   padding: 20px;
-   font-size: small;
+}
 
+.price-tag{
+    background-color: rgb(233, 230, 230);
+    padding: 20px 20px ;
 }
 
 
@@ -60,14 +138,44 @@
       display: none;
     }
 
-    .img1{
+    .side{
+        display: none;
         
         
     }
   }
 
-@media screen and (max-width: 468px) {
+  @media screen and (max-width: 1000px) {
+    .price{
+        order: first;
+    }
+    .similars{
+        order: last;
+    }
+    .offers{
+        margin:10px;
+        padding: 10px;
+    }
 
+    
+    
+}
+
+@media screen and (max-width: 468px) {
+    .carousel-img{
+        width: 580px;
+        height: 240px;
+    }
+
+    .offers{
+        margin:10px;
+        padding: 10px;
+    }
+    .price{
+        margin: 10px 10px;
+        height:400px;
+        
+    }
     
     
 }

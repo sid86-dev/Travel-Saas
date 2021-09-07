@@ -12,20 +12,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="stylesheet" href="">
-    <link rel="stylesheet" href="static/css/bootstrap.min.css">
-    <link rel="stylesheet" href="static/css/hero-slider.css">
-    <link rel="stylesheet" href="static/css/templatemo-main.css">
-    <link rel="stylesheet" href="static/css/owl-carousel.css">
-    <link rel="stylesheet" href="static/css/detail.css">
-    <link rel="stylesheet" href="static/css/fontAwesome.css">
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/hero-slider.css">
+    <link rel="stylesheet" href="/static/css/templatemo-main.css">
+    <link rel="stylesheet" href="/static/css/owl-carousel.css">
+    <link rel="stylesheet" href="/static/css/detail.css">
+    <link rel="stylesheet" href="/static/css/FontAwesome.css">
 
 
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
 
-    <script src="../static/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
-    <script src="../static/js/carousel.js"></script>
+    <script src="/static/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    <script src="/static/js/carousel.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
@@ -35,6 +35,12 @@
         body {
             width: 100%;
             height: 100%;
+          <!--
+               background-image: url('/static/img/bg_detail.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+          --> 
         }
 
         
@@ -44,61 +50,157 @@
 
 
 <body>
-    <div class="fixed-side-navbar">
-        <ul class="nav flex-column">
-            <li class="nav-item"><a class="nav-link" href="#home"><span>Intro</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="#services"><span>Services</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="#portfolio"><span>Portfolio</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="#our-story"><span>Our Story</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="#contact-us"><span>Contact Us</span></a></li>
-        </ul>
-    </div>
+ 
+<nav class="navbar navbar-default bg navbar-expand-sm ">
+        <div class="container">
+            <button class="navbar-toggler" style="color:blue;" type="button" data-toggle="collapse" data-target="#Navbar">
+                <span class="fa fa-list"></span>
+            </button>
+          
+           
+            
+           <div class="collapse navbar-collapse" id="Navbar">
+                <div class="navbar-nav mr-auto">
+                    <a class="nav-link" href="#"><span class="fa fa-home fa-lg"> </span> Home</a></li>
+                    <a class="nav-link" href="#"><span class="fa fa-info fa-lg"></span> About</a></li>
+                    <a class="nav-link" href="#"><span class="fa fa-list fa-lg"></span> Hotel Packages</a></li>
+                    <a class="nav-link" href="#"><span class="fa fa-address-card fa-lg"></span> Contact</a></li>
+                    <a class="nav-link" href="#"><span class="fa fa-plane fa-lg"> </span> Flight</a></li>
+                    <a class="nav-link" href="#"><span class="fa fa-cc-visa fa-lg"></span> Visa</a></li>
+                    <a class="nav-link" href="#"><span class="fa fa-book fa-lg"></span> Book now</a></li>
+                    <a class="nav-link" href="#"><span class="fa fa-car fa-lg"></span> Cab</a></li>
+                </div>  
 
-
-    <div class="container">
+                <i class="fa-solid fa-cars"></i>  
+                <span class="navbar-text">
+                    <a data-toggle="modal" href="#loginModal">
+                        <span class="fa fa-sign-in"></span> Login</a>
+                </span>        
+        </div>
+        </div>
+    </nav>
+    
+    
+    <div class="top">
+    <h9 class="side"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" style=" margin:8px 12px;" fill="currentColor" class="bi bi-chat-text-fill" viewBox="0 0 16 16">
+            <path d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM4.5 5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7zm0 2.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7zm0 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4z"/>
+            </svg><br>Live Chat <hr> <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" style=" margin:5px 15px;" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+            </svg><br> Get A Call </h9>
+    <div class="container carousel" style="padding-top:40px;">
         <h2>{{res[1]}}</h2>
-        <h4>{{res[5]}}</h4>    
+        <h4>{{res[5]}}</h4>   
         <div class="row ">
             <div id="carouselExampleSlidesOnly" class="carousel slide col-xl-6 col-lg-6 col-sm-12"   data-bs-ride="carousel">
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
-                    <img src="../static/img/first.jpg" class="carousel-img d-block img-fluid w-100" alt="Ladakh">
+                    <div class="carousel-item active ">
+                    <img src="/static/img/first.jpg" class="carousel-img d-block img-fluid w-100" alt="Ladakh">
                     </div>
                     <div class="carousel-item">
-                    <img src="../static/img/sec.jpg" class="carousel-img d-block w-100" alt="Ladakh">
+                    <img src="/static/img/sec.jpg" class="carousel-img d-block w-100" alt="Ladakh">
                     </div>
                     <div class="carousel-item">
-                    <img src="../static/img/third.jpg" class="carousel-img d-block w-100" alt="Ladakh">
+                    <img src="/static/img/third.jpg" class="carousel-img d-block w-100" alt="Ladakh">
                     </div>
                     <div class="carousel-item">
-                    <img src="../static/img/fourth.jpg" class="carousel-img d-block w-100" alt="Ladakh">
+                    <img src="/static/img/fourth.jpg" class="carousel-img d-block w-100" alt="Ladakh">
                     </div>
                     <div class="carousel-item">
-                    <img src="../static/img/ladakh1.jpg" class="carousel-img d-block w-100" alt="Ladakh">
+                    <img src="/static/img/ladakh1.jpg" class="carousel-img d-block w-100" alt="Ladakh">
                     </div>
                 </div >
             </div>
 
             <div class=" col-xl-4 col-lg-4">
-                <img src="../static/img/fourth.jpg" class = "img1 d-none d-lg-block" alt="Ladakh" >    
+                <img src="/static/img/fourth.jpg" class = "img1 d-none d-lg-block" alt="Ladakh" >    
             </div>
 
             <div class="img col-xl-2 ">
-                <img src="../static/img/goa.jpg" class = " img2 d-none d-xl-block" alt="ladakh" width="250px" height="150px" >
-                <img src="../static/img/manali.jpg" class = "img3 d-none d-xl-block" alt="manali" width="250px" height="150px" >
+                <img src="/static/img/goa.jpg" class = " img2 d-none d-xl-block" alt="ladakh" width="250px" height="150px" >
+                <img src="/static/img/manali.jpg" class = "img3 d-none d-xl-block" alt="manali" width="250px" height="150px" >
             </div>
         </div>
-    
+        <div class="desc" style="margin:10px; background-color: #e6ffff">
+            <h3 style="padding:20px; background-color: #e6ffff">Description</h3>
+            <p style="padding:20px; background-color: #e6ffff">
+            Ladakh, the erstwhile Buddhist kingdom is spectacularly jagged. Arid mountains, dramatically crowned rocky outcrops, picturesque gompas, meditational mani walls and multi hued flags are few of the many sites that exemplify the beauty of Ladakh. The well balanced traditional society of Ladakh has much to offer the West in terms of ecological awareness.
 
-        <div class="price">
-            <!--<strike>₹59,563</strike><br>--><br>
-            <p><font size="7px"><b>₹{{res[2]}}</b></font>per person
-            <br>
-            *Excluding applicable taxes</p>
-            <p>{{res[6]}}</p>
-            <a href="/booking/{{res[0]}}" ><button type="button" class="btn btn-primary">PROCEED TO BOOK ONLINE</button></a>
+            Ladakh is a magnificent and an unexplored wonderland of the Himalayas. It is one place that is considered as a heaven by everyone who is on a lookout to satiate their indomitable love for adventure. Besides trekking in Ladakh, you can indulge in a series of adventure sports such as biking, water rafting, safaris, etc. Also known as the ‘Land of Passes, Ladakh forms an alluring part of the state of Jammu and Kashmir in India. 
+            
+            </p>
         </div>
     </div>
+    </div>
+
+    
+
+
+    <div class="container" style="" >
+        <div class="row col-12 ">
+            <div class="price  col-lg-7 col-sm-12 ">
+                <div class="price-tag">
+                    <strike>{{res[6]}}</strike><br>
+                    <p><font size="6px"><b>₹{{res[2]}}</b></font>per person<br>
+                    *Excluding applicable taxes</p>
+                </div>
+                <div class="modify ">
+                <h4 style="padding:20px; width:50%">18 oct - 21 oct</h4>
+                <p style="padding:0px 20px">Flexible with dates?<br>
+                Pay ₹2,438 lesser for this package on 5 Oct</p>
+                
+                </div>
+
+                <hr>
+                <a href="/booking/{{res[0]}}"><button type="button" class="btn btn-primary" style="border-radius:15px padding:20px 40px; ">PROCEED TO BOOK ONLINE</button></a>
+            </div>
+            <div class="offers col-lg-4 col-sm-12">
+                <div class="offer-head "style="padding: 20px;">
+                    <h3>Best deal for you</h3>
+                    <div class="list" style="padding:0px 25px">
+                       <ul class="row">
+                            <li class="col-6 "> reedem wallet</li>
+                            <li class="col-5" > Book faster</li>
+                        </ul>
+                        <ul class="row">
+                            <li class="col-6"> Get special deals</li>
+                            <li class="col-6" > Continue in any device</li>
+                        </ul>
+                    </div>
+                            
+                        
+                    </div>
+                </div>
+
+            </div>
+            
+
+        </div>
+        <div class="container ">
+        <div class="similars col-12 ">
+                <h3 style="padding-bottom : 30px;; ">you also like this place</h3>
+                <div class="col-md-12">
+                    <div id="owl-testimonials" class="owl-carousel owl-theme">
+
+                        {% for i in res %}
+                        
+                         <div class="item">
+                            <div class="testimonials-item">
+                                <a href="/package_/{{i[1]}}"><img src="{{i[2]}}" width="300px" height="300px"alt=""></a>
+                             
+                                <div class="text-content">
+                                    <a href="/package_/{{i[1]}}"> <h4>{{i[1]}}</h4></a>
+                                </div>
+                            </div>
+                        </div> 
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+    </div>
+        
+        </div>
+
+        
 
 
     
@@ -132,46 +234,16 @@
     <script>
         window.jQuery || document.write('<script src="static/js/vendor/jquery-1.11.2.min.js"><\/script>')
     </script>
-    <script src="../static/js/vendor/bootstrap.min.js"></script>
-    <script src="../static/js/plugins.js"></script>
-    <script src="../static/js/main.js"></script>
-    <script>
-        function openCity(cityName) {
-            var i;
-            var x = document.getElementsByClassName("city");
-            for (i = 0; i < x.length; i++) {
-                x[i].style.display = "none";
-            }
-            document.getElementById(cityName).style.display = "block";
-        }
-    </script>
-
-    <script>
-        $(document).ready(function() {
-            // Add smooth scrolling to all links
-            $(".fixed-side-navbar a, .primary-button a").on('click', function(event) {
-
-                // Make sure this.hash has a value before overriding default behavior
-                if (this.hash !== "") {
-                    // Prevent default anchor click behavior
-                    event.preventDefault();
-
-                    // Store hash
-                    var hash = this.hash;
-
-                    // Using jQuery's animate() method to add smooth page scroll
-                    // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
-                    $('html, body').animate({
-                        scrollTop: $(hash).offset().top
-                    }, 800, function() {
-
-                        // Add hash (#) to URL when done scrolling (default click behavior)
-                        window.location.hash = hash;
-                    });
-                } // End if
-            });
+    <script src="static/js/vendor/bootstrap.min.js"></script>
+    <script src="static/js/plugins.js"></script>
+    <script src="static/js/main.js"></script>
+    <script type="text/javascript">
+        $ (window).scroll(function(){
+                $('nav').toggleClass('scrolled' , $(this).scrollTop() > 100 );
+            
+            
         });
-    </script>
+        </script>
    
    
 
