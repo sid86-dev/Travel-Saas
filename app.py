@@ -124,7 +124,7 @@ def booking(pid):
         book=booking_details(first_name=f_name,last_name=l_name,people_count=count,email=email,phone=phone,package_title=row.title,period=row.subheading,dep_date=dep_date,arrival_date=arrive_date,price=price)
         db.session.add(book)
         db.session.commit()
-        return redirect('/')
+        return render_template('/confirmpage.html')
         """except:
             #print("error")
             flash("Something went wrong!!!")
@@ -182,6 +182,21 @@ def packdetails(pid):
         return render_template("/admin_login.html")
     #return render_template("/.html",name=session['user'])
 
+@app.route('/admin_addpackage',methods=['POST','GET'])
+def admin_addpackage():
+    if 'title' in request.form and 'img' in request.form and 'price' in request.form and 'subheading' in request.form and 'location' in request.form and 'body' in request.form:
+        name= request.form['title']
+        img= request.form['img']
+        price= request.form['price']
+        subheading= request.form['subheading']
+        location= request.form['location']
+        body= request.form['body']
+        row=details(title=name,price=price,location=location,img=img,subheading=subheading,body=body)
+        db.session.add(row)
+        db.session.commit()
+        return redirect("/admin_dashboard")
+    return render_template("/add_newpackage.html")
+
 @app.route('/admin_city')
 def admin_city():
     if 'user' in session:
@@ -206,7 +221,7 @@ def admin_citydetails(pid):
             l.extend([stm.id,stm.name,stm.img])
             return render_template("/editform_city.html",res=l)
         if request.form.get("delete"):
-            row=details.query.filter_by(id=pid).first()
+            row=city.query.filter_by(id=pid).first()
             db.session.delete(row)
             db.session.commit()
             return redirect('/admin_city')
