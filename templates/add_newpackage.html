@@ -7,7 +7,7 @@
 
     
 
-    <title>Add New city form</title>
+    <title>add new package form</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -43,24 +43,32 @@
 <body>
     <div class="container">
         <div class="form">
-            <form method="post" action="/admin_addcity">
-        <h1 class="heading">Add New City</h1><hr class="line"/>
+        <h1 class="heading">Add New Package</h1><hr class="line"/>
             <div class="form-content">
+                <form method="post" action="/admin_addpackage">
                 <div class="contents row">
-                    <h4>location </h4><input type="text" class="content" name="name" placeholder="location">
+                    <h4>title</h4><input type="text" class="content" name="title" placeholder="title">
+                </div>
+                <div class="contents row">
+                    <h4>price</h4><input type="text" class="content"name="price"  placeholder="price(in Rupee)">
+                </div>
+                <div class="contents row">    
+                    <h4>location</h4><input type="text" class="content" name="location" placeholder="location">
                 </div>
                 <div class="contents row">
                     <h4>image</h4><input type ="text" class="content img-area" name="img" placeholder="Drop Image"/><br><button class="button">Upload Image</button>
                 </div>
-                
                 <div class="contents row">
-                    
-                    <button type="submit" class="button-sub">Save</button>
-                    
+                    <h4>subheading</h4><input type="text" class="content" name="subheading" placeholder="subheading">
                 </div>
-
+                <div class="contents row">
+                    <h4>body</h4><input type="textarea"  class="content" name="body" placeholder="body">
+                </div>
+                <div class="contents row">
+                    <button type="submit"class="button-sub">Save</button>
+                </div>
+                </form>
             </div>
-            </form>
         </div>
         
     </div>
