@@ -69,6 +69,10 @@ def home():
         l=[]
     return render_template('/index.html',res=result)
 
+@app.route('/enquiry_form')
+def enquiry_form():
+    return render_template("/enquiry-form.html")
+
 @app.route('/package_details/<string:name>')
 def package_details(name):
     l=[]
@@ -210,7 +214,7 @@ def admin_addpackage():
 def admin_editpackage(pid):
     if 'title' in request.form and 'img' in request.form and 'price' in request.form and 'subheading' in request.form and 'location' in request.form and 'body' in request.form:
         row=details.query.filter_by(id=pid).first()
-        row.name= request.form['title']
+        row.title= request.form['title']
         row.img= request.form['img']
         row.price= request.form['price']
         row.subheading= request.form['subheading']
