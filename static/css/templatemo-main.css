@@ -182,7 +182,7 @@ a:hover { color: #FF0; }
   padding-left: 15px;
   padding-right: 15px;
   padding-top: 15vh;
-  background-image: url(../img/2nd-section.jpg);
+  background-image: url(../img/a-section.jpg);
   background-attachment: fixed;
   min-height: 100vh;
   background-size: cover;
@@ -245,7 +245,7 @@ h4, .h4 {
 
 .projects-content {
   padding-top: 20vh;
-  background-image: url(../img/3rd-section.jpg);
+  background-image: url(../img/d-section.jpg);
 }
 
 .projects-content .item img {
@@ -735,4 +735,15 @@ body.lb-disable-scrolling {
   cursor: pointer;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
+}
+
+.nav-link{
+    
+  margin: 0px 10px;
+  justify-content: space-between;
+  display: inline-block;
+  margin-top: 10px;
+  color:green;
+  text-transform: uppercase;
+  border-radius: 25px;
 }
