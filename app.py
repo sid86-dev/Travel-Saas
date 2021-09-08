@@ -69,6 +69,10 @@ def home():
         l=[]
     return render_template('/index.html',res=result)
 
+@app.route('/enquiry_form')
+def enquiry_form():
+    return render_template("/enquiry-form.html")
+
 @app.route('/package_details/<string:name>')
 def package_details(name):
     l=[]
