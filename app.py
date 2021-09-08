@@ -96,7 +96,7 @@ def booking(pid):
         l_name= request.form['l_name']
         phone= request.form['phone']
         email= request.form['email']
-        arrive_date= request.form['arrive_date']
+        #arrive_date= request.form['arrive_date']
         dep_date= request.form['dep_date']
         count= request.form['count']
         #id= request.form['pack']
@@ -114,12 +114,13 @@ def booking(pid):
         c=int(c)
         date=dep_date
         #date = datetime.datetime(dep_date)
-        """
+
         for i in range(c): 
             date += datetime.timedelta(days=1)
         print(date)
+        arrival_date = date
         #date_after_month = datetime.now()+ relativedelta(day=1)
-        """
+
         price=count*row.price
         book=booking_details(first_name=f_name,last_name=l_name,people_count=count,email=email,phone=phone,package_title=row.title,period=row.subheading,dep_date=dep_date,arrival_date=arrive_date,price=price)
         db.session.add(book)
@@ -129,7 +130,7 @@ def booking(pid):
             #print("error")
             flash("Something went wrong!!!")
         """
-        return redirect("/booking/pid")
+        #return redirect("/booking/pid")
     else:
         return render_template("/booking.html",res=l)
 
