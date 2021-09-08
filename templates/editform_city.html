@@ -45,17 +45,19 @@
         <div class="form">
         <h1 class="heading">Edit Form</h1><hr class="line"/>
             <div class="form-content">
+                <form method="post" action="/admin_editcity/{{res[0]}}">
                 <div class="contents row">
-                    <h4>location </h4><input type="text" class="content" placeholder="location">
+                    <h4>location </h4><input type="text" value="{{res[1]}}" class="content" name="name" placeholder="location">
                 </div>
                 <div class="contents row">
-                    <h4>image</h4><input type ="text" class="content img-area" placeholder="Drop Image"/><br><button class="button">Upload Image</button>
+                    <h4>image</h4><input type ="text" class="content img-area" value="{{res[2]}}" name="img" placeholder="Drop Image"/><br><button class="button">Upload Image</button>
                 </div>
                 
                 <div class="contents row">
-                    <button class="button-sub">Save</button>
+                    
+                    <button type="submit" class="button-sub">Save</button>
                 </div>
-
+            </form>
             </div>
         </div>
         
