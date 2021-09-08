@@ -736,3 +736,14 @@ body.lb-disable-scrolling {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
 }
+
+.nav-link{
+    
+  margin: 0px 10px;
+  justify-content: space-between;
+  display: inline-block;
+  margin-top: 10px;
+  color:green;
+  text-transform: uppercase;
+  border-radius: 25px;
+}
