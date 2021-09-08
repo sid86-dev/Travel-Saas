@@ -5,7 +5,7 @@ import json
 import random
 from urllib.request import urlopen
 import hashlib
-import MySQLdb
+# import MySQLdb
 import random
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
