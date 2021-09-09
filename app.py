@@ -1,6 +1,6 @@
 from os import read
 from flask import Flask, render_template, request, url_for, redirect, flash,session
-#from flask_sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy
 import json
 import random
 from urllib.request import urlopen
@@ -13,8 +13,8 @@ from dateutil.relativedelta import relativedelta
 
 app = Flask(__name__)
 #Con = MySQLdb.Connect(host="184.168.96.123", port=3306, user="sid86", passwd="siddharth18", db="untouched_destination")
-app.config ['SQLALCHEMY_DATABASE_URI'] = "mysql://sid86:siddharth18@184.168.96.123/untouched_destination"
-#app.config ['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///travel1.db'
+#app.config ['SQLALCHEMY_DATABASE_URI'] = "mysql://sid86:siddharth18@184.168.96.123/untouched_destination"
+app.config ['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///travel1.db'
 #app.config ['SQLALCHEMY_DATABASE_URI'] = Con
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.config["SECRET_KEY"] = 'TPmi4aLWRbyVq8zu9v82dWYW1'

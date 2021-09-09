@@ -1,0 +1,35 @@
+.bg{
+    background: transparent !important;
+    transition: 0.75s ease;
+    
+  }
+
+  .bg.scrolled{
+    background:black !important;
+    height: 70px;
+    opacity: 0.6;
+    color: white;
+  }
+ 
+  
+  .nav-link{
+    
+    margin: 0px 20px;
+    justify-content: space-between;
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 14px;
+    color:white;
+    font-weight: bolder;
+    text-transform: uppercase;
+    border-radius: 25px;
+  }
+
+  @media screen and (max-width: 500px){
+    .bg{
+        background-color:black !important;
+        opacity: 0.8;
+       
+    }      
+
+  }
