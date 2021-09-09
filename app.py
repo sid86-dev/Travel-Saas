@@ -1,6 +1,6 @@
 from os import read
 from flask import Flask, render_template, request, url_for, redirect, flash,session
-#from flask_sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy
 import json
 import random
 from urllib.request import urlopen
