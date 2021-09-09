@@ -1,6 +1,6 @@
 from os import read
 from flask import Flask, render_template, request, url_for, redirect, flash,session
-#from flask_sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy
 import json
 import random
 from urllib.request import urlopen
@@ -105,6 +105,7 @@ def booking(pid):
         phone= request.form['phone']
         email= request.form['email']
         #arrive_date= request.form['arrive_date']
+        print(f_name)
         dep_date= request.form['dep_date']
         count= request.form['count']
         #id= request.form['pack']
@@ -132,6 +133,8 @@ def booking(pid):
         #date_after_month = datetime.now()+ relativedelta(day=1)
 
         price=count*row.price
+        #price='67687'
+        print(price)
         book=booking_details(first_name=f_name,last_name=l_name,people_count=count,email=email,phone=phone,package_title=row.title,period=row.subheading,dep_date=dep_date,arrival_date=arrive_date,price=price)
         db.session.add(book)
         db.session.commit()
