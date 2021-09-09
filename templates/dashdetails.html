@@ -110,6 +110,69 @@
     margin-top: 5rem;
     margin-left: 2.7rem;
   }
+ 
+  .start-btn a{
+    color: azure; 
+    text-decoration: none;
+  }
+  .modal-box{
+    position: absolute;
+    top: 3%;
+    left: 40%;
+    opacity: 0;
+    visibility: hidden;
+    background: white;
+    height: auto;
+    width: 400px;
+    height: 250px;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 30px rgba(0,0,0,.2);
+  }
+  .modal-box.show-modal{
+    top: 2%;
+    opacity: 1;
+    visibility: visible;
+    transition: .4s;
+  }
+  .modal-box .fa-times{
+    font-size: 50px;
+    color: red;
+    font-weight: bold;
+    height: 50px;
+    width: 50px;
+    border: 1px solid red;
+    text-align: center;
+    border-radius:50%;
+    box-sizing: border-box;
+    margin: 0 0 0 165px;
+  }
+  .modal-box header{
+    font-weight: bold;
+    font-size: 35px;
+    font-family: 'Lobster Two';
+    color: red;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .modal-box p{
+    text-align: center;
+    font-size: 20px;
+  }
+  .modal-box button{
+    float: right;
+    width: 17%;
+    margin-left: 10px;
+    margin-top: 20px;
+    border-radius: 5px;
+   
+  }
+  .modal-box .ok{
+    background-color: red;
+    color: white;
+  }
+
+ 
     </style>
 </head>
 
@@ -192,10 +255,28 @@
                                     <td>{{row[5]}}</td>
                                     <td>{{row[6]}}</td>
                                     <form method="post" action="/packdetails/{{row[0]}}" >
+                                     
                                     <td><button style="background-color: black; color: azure; border-radius: 5px;"  name="edit" value="edit">Edit</button>
-                                    <button style="background-color: #ff5757; color: azure; border-radius: 5px;" id="b1" name="delete" value="delete">Delete</button></td>
-                                    </form>
+                                      <button class="start-btn" style="background-color: #ff5757; color: azure; border-radius: 5px;"><a href="#"> Delete </a></button></td>
+                  
+                                  </div>
+                                  </form>
                                 </tr>
+                                <div class="center modal-box">
+                                     <div class="fas fa-times"></div>
+                                     <header>Error!</header>
+                                     <p>
+                                        Are You Sure You Want To Continue!!
+                                     </p>
+                                    <a href=""> <button class="ok">ok</button></a>
+                                    <a href=""> <button class="cancel">cancel</button></a>
+                                    
+                                    
+                                  </div>
+                                  
+                                
+                              
+                                
                                 
                             {% endfor %}
                                 <!--
@@ -285,9 +366,20 @@
 
     </script>
     <script>
-        $("#b1,#b1").click(function(){
-             alert("Are You Sure !!");
+    
+        $(document).ready(function(){
+          $('.start-btn').click(function(){
+            $('.modal-box').toggleClass("show-modal");
+            $('.start-btn').toggleClass("show-modal");
           });
+          $('.fa-times').click(function(){
+            $('.modal-box').toggleClass("show-modal");
+            $('.start-btn').toggleClass("show-modal");
+          });
+        });
+  
+          
+          
     </script>
 </body>
 

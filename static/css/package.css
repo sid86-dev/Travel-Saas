@@ -1,5 +1,11 @@
 
 
+ .nav-link{
+    
+  font-size: 13px;
+ 
+}
+
 p {
   font-size: 15px;
   line-height: 25px;
@@ -62,7 +68,7 @@ body {
 
 .projects-content {
   padding-top: 20vh;
-  background-image: url(../img/3rd-section.jpg);
+  background-image: url(../img/d-section.jpg);
 }
 
 .projects-content .item img {

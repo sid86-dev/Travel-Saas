@@ -5,8 +5,14 @@ import json
 import random
 from urllib.request import urlopen
 import hashlib
+<<<<<<< HEAD
 import MySQLdb
 from datetime import datetime,timedelta
+=======
+#import MySQLdb
+import random
+from datetime import datetime
+>>>>>>> 8770860cc267213c691538b7303bf0a188328134
 from dateutil.relativedelta import relativedelta
 from flask_mail import Mail,Message
 
@@ -69,11 +75,18 @@ def home():
         l=[]
     return render_template('/index.html',res=result)
 
+@app.route('/enquiry_form')
+def enquiry_form():
+    return render_template("/enquiry-form.html")
+
 @app.route('/package_details/<string:name>')
 def package_details(name):
     l=[]
     stm=details.query.filter_by(title=name).first()
-    l.extend([stm.id,stm.title,stm.price,stm.location,stm.img,stm.subheading,stm.body])
+    a=(450,600,500,300,250)
+    c=random.choice(a)+stm.price
+    l.extend([stm.id,stm.title,stm.price,stm.location,stm.img,stm.subheading,stm.body,c])
+    
     return render_template("/details.html",res=l)
 
 @app.route('/package_/<string:pid>')
@@ -101,11 +114,16 @@ def booking(pid):
         dep_date= request.form['dep_date']
         count= request.form['count']
         #id= request.form['pack']
+<<<<<<< HEAD
         if f_name=="" or l_name=="" or phone=="" or email=="" or dep_date==""or count=="" or id=="":
+=======
+        if f_name=="" or l_name=="" or phone=="" or email=="" or dep_date==""  or count=="":
+>>>>>>> 8770860cc267213c691538b7303bf0a188328134
             flash("Fields shouldnt be left empty")
             return redirect(url_for('booking',pid=pid))
         
 
+<<<<<<< HEAD
         #s=row.subheading
         #a=0
         #for i, c in enumerate(s):
@@ -120,6 +138,24 @@ def booking(pid):
         #    date += datetime.timedelta(days=1)
         #print(date)
         #arrival_date = date
+=======
+        s=row.subheading
+        a=0
+        for i, c in enumerate(s):
+            if a<2 and c.isdigit():
+                a+=1
+            break
+        c=int(c)
+        
+        date=dep_date
+        #date = datetime.datetime(dep_date)
+        """
+        for i in range(c): 
+            date += datetime.timedelta(days=1)
+        print(date)
+        """
+        arrive_date = date
+>>>>>>> 8770860cc267213c691538b7303bf0a188328134
         #date_after_month = datetime.now()+ relativedelta(day=1)
 
         price=count*row.price
@@ -149,6 +185,8 @@ def process_mail(email):
 
 @app.route('/admin_login',methods=['POST','GET'])
 def admin_login():
+    if 'user' in session:
+        return redirect("/admin_dashboard")
     if 'email' in request.form and 'password' in request.form:
         us = request.form['email']
         password = request.form['password']
@@ -211,6 +249,21 @@ def admin_addpackage():
         return redirect("/admin_dashboard")
     return render_template("/add_newpackage.html")
 
+@app.route('/admin_editpackage/<int:pid>',methods=['POST','GET'])
+def admin_editpackage(pid):
+    if 'title' in request.form and 'img' in request.form and 'price' in request.form and 'subheading' in request.form and 'location' in request.form and 'body' in request.form:
+        row=details.query.filter_by(id=pid).first()
+        row.title= request.form['title']
+        row.img= request.form['img']
+        row.price= request.form['price']
+        row.subheading= request.form['subheading']
+        row.location= request.form['location']
+        row.body= request.form['body']
+        db.session.commit()
+        return redirect("/admin_dashboard")
+    return render_template("/editform_detail.html")
+
+
 @app.route('/admin_city')
 def admin_city():
     if 'user' in session:
@@ -256,6 +309,16 @@ def admin_addcity():
         db.session.commit()
         return redirect("/admin_city")
     return render_template("/add_newcity.html")
+
+@app.route('/admin_editcity/<int:pid>',methods=['POST','GET'])
+def admin_editcity(pid):
+    if 'name' in request.form and 'img' in request.form:
+        row=city.query.filter_by(id=pid).first()
+        row.name= request.form['name']
+        row.img= request.form['img']
+        db.session.commit()
+        return redirect("/admin_city")
+    return render_template("/editform_city.html")
 
 @app.route('/admin_logout')
 def admin_logout():
