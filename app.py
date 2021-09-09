@@ -6,8 +6,9 @@ import random
 from urllib.request import urlopen
 import hashlib
 import MySQLdb
-from datetime import datetime
+from datetime import datetime,timedelta
 from dateutil.relativedelta import relativedelta
+from flask_mail import Mail,Message
 
 
 app = Flask(__name__)
@@ -91,7 +92,7 @@ def booking(pid):
     l=[]
     row=details.query.filter_by(id=pid).first()
     l.extend([row.id,row.title,row.subheading])
-    if 'f_name' in request.form and 'l_name' in request.form and 'phone' in request.form and 'email' in request.form and 'dep_date' in request.form and 'arrive_date' in request.form and 'count' in request.form :
+    if 'f_name' in request.form and 'l_name' in request.form and 'phone' in request.form and 'email' in request.form and 'dep_date' in request.form and 'count' in request.form :
         f_name= request.form['f_name']
         l_name= request.form['l_name']
         phone= request.form['phone']
@@ -100,32 +101,32 @@ def booking(pid):
         dep_date= request.form['dep_date']
         count= request.form['count']
         #id= request.form['pack']
-        if f_name=="" or l_name=="" or phone=="" or email=="" or dep_date=="" or arrive_date=="" or count=="" or id=="":
+        if f_name=="" or l_name=="" or phone=="" or email=="" or dep_date==""or count=="" or id=="":
             flash("Fields shouldnt be left empty")
             return redirect(url_for('booking',pid=pid))
         
 
-        s=row.subheading
-        a=0
-        for i, c in enumerate(s):
-            if a<2 and c.isdigit():
-                a+=1
-            break
-        c=int(c)
-        date=dep_date
+        #s=row.subheading
+        #a=0
+        #for i, c in enumerate(s):
+        #    if a<2 and c.isdigit():
+        #        a+=1
+        #    break
+        #c=int(c)
+        #date=dep_date
         #date = datetime.datetime(dep_date)
 
-        for i in range(c): 
-            date += datetime.timedelta(days=1)
-        print(date)
-        arrival_date = date
+        #for i in range(c): 
+        #    date += datetime.timedelta(days=1)
+        #print(date)
+        #arrival_date = date
         #date_after_month = datetime.now()+ relativedelta(day=1)
 
         price=count*row.price
-        book=booking_details(first_name=f_name,last_name=l_name,people_count=count,email=email,phone=phone,package_title=row.title,period=row.subheading,dep_date=dep_date,arrival_date=arrive_date,price=price)
+        book=booking_details(first_name=f_name,last_name=l_name,people_count=count,email=email,phone=phone,package_title=row.title,period=row.subheading,dep_date=dep_date,price=price)
         db.session.add(book)
         db.session.commit()
-        return render_template('/confirmpage.html')
+        return redirect(f"/process_mail/{f_name}/{l_name}/{email}/{phone}")
         """except:
             #print("error")
             flash("Something went wrong!!!")
@@ -133,6 +134,18 @@ def booking(pid):
         #return redirect("/booking/pid")
     else:
         return render_template("/booking.html",res=l)
+
+app.config.update(dict(MAIL_SERVER = 'smtp.googlemail.com',MAIL_PORT = '465'
+,MAIL_USE_TLS = 'False',MAIL_USE_SSL = 'True',MAIL_USERNAME = 'testflaskmail25@gmail.com',MAIL_PASSWORD = ['Test@123']))
+mail =  Mail(app)
+
+@app.route('/process_mail/<string:email>/<string:f_name>/<string:l_name>/<int:phone>',methods=['POST'])
+def process_mail(email):
+        msg = Message('Test',sender='testflaskmail25@gmail.com',recipients=['email'])
+        msg.body = f"Your enquriy Details: Name {f_name} {l_name}, {email}, {phone}"
+        mail.send(msg)
+        return render_template('confirmpage.html',email = email)
+
 
 @app.route('/admin_login',methods=['POST','GET'])
 def admin_login():
