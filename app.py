@@ -5,14 +5,11 @@ import json
 import random
 from urllib.request import urlopen
 import hashlib
-<<<<<<< HEAD
 import MySQLdb
 from datetime import datetime,timedelta
-=======
 #import MySQLdb
 import random
 from datetime import datetime
->>>>>>> 8770860cc267213c691538b7303bf0a188328134
 from dateutil.relativedelta import relativedelta
 from flask_mail import Mail,Message
 
@@ -114,16 +111,12 @@ def booking(pid):
         dep_date= request.form['dep_date']
         count= request.form['count']
         #id= request.form['pack']
-<<<<<<< HEAD
-        if f_name=="" or l_name=="" or phone=="" or email=="" or dep_date==""or count=="" or id=="":
-=======
+        # if f_name=="" or l_name=="" or phone=="" or email=="" or dep_date==""or count=="" or id=="":
         if f_name=="" or l_name=="" or phone=="" or email=="" or dep_date==""  or count=="":
->>>>>>> 8770860cc267213c691538b7303bf0a188328134
             flash("Fields shouldnt be left empty")
             return redirect(url_for('booking',pid=pid))
         
 
-<<<<<<< HEAD
         #s=row.subheading
         #a=0
         #for i, c in enumerate(s):
@@ -138,7 +131,6 @@ def booking(pid):
         #    date += datetime.timedelta(days=1)
         #print(date)
         #arrival_date = date
-=======
         s=row.subheading
         a=0
         for i, c in enumerate(s):
@@ -155,7 +147,6 @@ def booking(pid):
         print(date)
         """
         arrive_date = date
->>>>>>> 8770860cc267213c691538b7303bf0a188328134
         #date_after_month = datetime.now()+ relativedelta(day=1)
 
         price=count*row.price
@@ -176,7 +167,7 @@ app.config.update(dict(MAIL_SERVER = 'smtp.googlemail.com',MAIL_PORT = '465'
 mail =  Mail(app)
 
 @app.route('/process_mail/<string:email>/<string:f_name>/<string:l_name>/<int:phone>',methods=['POST'])
-def process_mail(email):
+def process_mail(email, f_name,l_name,phone):
         msg = Message('Test',sender='testflaskmail25@gmail.com',recipients=['email'])
         msg.body = f"Your enquriy Details: Name {f_name} {l_name}, {email}, {phone}"
         mail.send(msg)
