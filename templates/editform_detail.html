@@ -45,28 +45,29 @@
         <div class="form">
         <h1 class="heading">Edit Form</h1><hr class="line"/>
             <div class="form-content">
+                <form method="post" action="/admin_editpackage/{{res[0]}}">
                 <div class="contents row">
-                    <h4>title</h4><input type="text" class="content" placeholder="title">
+                    <h4>title</h4><input type="text" name="title" value="{{res[1]}}" class="content" placeholder="title">
                 </div>
                 <div class="contents row">
-                    <h4>price</h4><input type="text" class="content" placeholder="price(in Rupee)">
+                    <h4>price</h4><input type="text" class="content" name="price" value="{{res[2]}}" placeholder="price(in Rupee)">
                 </div>
                 <div class="contents row">    
-                    <h4>location</h4><input type="text" class="content" placeholder="location">
+                    <h4>location</h4><input type="text" class="content" name="location" value="{{res[3]}}" placeholder="location">
                 </div>
                 <div class="contents row">
-                    <h4>image</h4><input type ="text" class="content img-area" placeholder="Drop Image"/><br><button class="button">Upload Image</button>
+                    <h4>image</h4><input type ="text" class="content img-area" name="img" value="{{res[4]}}" placeholder="Drop Image"/><br><button class="button">Upload Image</button>
                 </div>
                 <div class="contents row">
-                    <h4>subheading</h4><input type="text" class="content" placeholder="subheading">
+                    <h4>subheading</h4><input type="text" class="content" name="subheading" value="{{res[5]}}" placeholder="subheading">
                 </div>
                 <div class="contents row">
-                    <h4>body</h4><input type="textarea"  class="content" placeholder="body">
+                    <h4>body</h4><input type="textarea"  class="content" name="body" value="{{res[6]}}" placeholder="body">
                 </div>
                 <div class="contents row">
-                    <button class="button-sub">Save</button>
+                    <button  type="submit" class="button-sub">Save</button>
                 </div>
-
+                </form>
             </div>
         </div>
         

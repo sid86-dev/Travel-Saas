@@ -35,12 +35,12 @@
         body {
             width: 100%;
             height: 100%;
-          <!--
+          
                background-image: url('/static/img/bg_detail.jpg');
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
-          --> 
+          
         }
 
         
@@ -104,6 +104,7 @@
                     </div>
                 </div >
             </div>
+            
 
             <div class=" col-xl-4 col-lg-4">
                 <img src="/static/img/fourth.jpg" class = "img1 d-none d-lg-block" alt="Ladakh" >    
@@ -114,13 +115,17 @@
                 <img src="/static/img/manali.jpg" class = "img3 d-none d-xl-block" alt="manali" width="250px" height="150px" >
             </div>
         </div>
+        <!-- <div ><a href="/booking/{{res[0]}}"><button type="button" class="btn btn-info btn-lg active btn1" style="border-radius:15px padding:20px 40px float: right ;">PROCEED TO BOOK ONLINE</button></a></div> -->
+        <div class="text-right"><a href="/booking/{{res[0]}}"><button type="button" class="btn btn-info btn-lg" style="border-radius:15px padding:20px 40px;">PROCEED TO BOOK ONLINE</button></a></div>
+        
         <div class="desc" style="margin:10px; background-color: #e6ffff">
             <h3 style="padding:20px; background-color: #e6ffff">Description</h3>
             <p style="padding:20px; background-color: #e6ffff">
-            Ladakh, the erstwhile Buddhist kingdom is spectacularly jagged. Arid mountains, dramatically crowned rocky outcrops, picturesque gompas, meditational mani walls and multi hued flags are few of the many sites that exemplify the beauty of Ladakh. The well balanced traditional society of Ladakh has much to offer the West in terms of ecological awareness.
+            <!--Ladakh, the erstwhile Buddhist kingdom is spectacularly jagged. Arid mountains, dramatically crowned rocky outcrops, picturesque gompas, meditational mani walls and multi hued flags are few of the many sites that exemplify the beauty of Ladakh. The well balanced traditional society of Ladakh has much to offer the West in terms of ecological awareness.
 
             Ladakh is a magnificent and an unexplored wonderland of the Himalayas. It is one place that is considered as a heaven by everyone who is on a lookout to satiate their indomitable love for adventure. Besides trekking in Ladakh, you can indulge in a series of adventure sports such as biking, water rafting, safaris, etc. Also known as the ‘Land of Passes, Ladakh forms an alluring part of the state of Jammu and Kashmir in India. 
-            
+            -->
+            {{res[6]}}
             </p>
         </div>
     </div>
@@ -133,7 +138,7 @@
         <div class="row col-12 ">
             <div class="price  col-lg-7 col-sm-12 ">
                 <div class="price-tag">
-                    <strike>{{res[6]}}</strike><br>
+                    <strike>₹{{res[7]}}</strike><br>
                     <p><font size="6px"><b>₹{{res[2]}}</b></font>per person<br>
                     *Excluding applicable taxes</p>
                 </div>
@@ -145,7 +150,7 @@
                 </div>
 
                 <hr>
-                <a href="/booking/{{res[0]}}"><button type="button" class="btn btn-primary" style="border-radius:15px padding:20px 40px; ">PROCEED TO BOOK ONLINE</button></a>
+                <a href="/booking/{{res[0]}}"><button type="button" class="btn btn-info btn-sm" style="border-radius:15px padding:20px 40px; ">PROCEED TO BOOK ONLINE</button></a>
             </div>
             <div class="offers col-lg-4 col-sm-12">
                 <div class="offer-head "style="padding: 20px;">
