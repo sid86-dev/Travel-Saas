@@ -7,7 +7,6 @@ from urllib.request import urlopen
 import hashlib
 import MySQLdb
 from datetime import datetime,timedelta
-#import MySQLdb
 import random
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
