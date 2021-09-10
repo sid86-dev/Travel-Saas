@@ -5,7 +5,7 @@ import json
 import random
 from urllib.request import urlopen
 import hashlib
-import MySQLdb
+# import MySQLdb
 from datetime import datetime,timedelta
 import random
 from datetime import datetime
@@ -15,7 +15,8 @@ from flask_mail import Mail,Message
 
 app = Flask(__name__)
 #Con = MySQLdb.Connect(host="184.168.96.123", port=3306, user="sid86", passwd="siddharth18", db="untouched_destination")
-app.config ['SQLALCHEMY_DATABASE_URI'] = "mysql://sid86:siddharth18@184.168.96.123/untouched_destination"
+# app.config ['SQLALCHEMY_DATABASE_URI'] = "mysql://sid86:siddharth18@184.168.96.123/untouched_destination"
+app.config ['SQLALCHEMY_DATABASE_URI'] = "sqlite:///data.sqlite"
 #app.config ['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///travel1.db'
 #app.config ['SQLALCHEMY_DATABASE_URI'] = Con
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
