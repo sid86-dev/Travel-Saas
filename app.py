@@ -5,15 +5,18 @@ import json
 import random
 from urllib.request import urlopen
 import hashlib
-#import MySQLdb
+# import MySQLdb
+from datetime import datetime,timedelta
 import random
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
+from flask_mail import Mail,Message
 
 
 app = Flask(__name__)
 #Con = MySQLdb.Connect(host="184.168.96.123", port=3306, user="sid86", passwd="siddharth18", db="untouched_destination")
-#app.config ['SQLALCHEMY_DATABASE_URI'] = "mysql://sid86:siddharth18@184.168.96.123/untouched_destination"
+# app.config ['SQLALCHEMY_DATABASE_URI'] = "mysql://sid86:siddharth18@184.168.96.123/untouched_destination"
+#app.config ['SQLALCHEMY_DATABASE_URI'] = "sqlite:///data.sqlite"
 app.config ['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///travel1.db'
 #app.config ['SQLALCHEMY_DATABASE_URI'] = Con
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
@@ -78,7 +81,8 @@ def package_details(name):
     l=[]
     stm=details.query.filter_by(title=name).first()
     a=(450,600,500,300,250)
-    c=random.choice(a)+stm.price
+    p=int(stm.price)
+    c=random.choice(a)+p
     l.extend([stm.id,stm.title,stm.price,stm.location,stm.img,stm.subheading,stm.body,c])
     
     return render_template("/details.html",res=l)
@@ -105,15 +109,14 @@ def booking(pid):
         phone= request.form['phone']
         email= request.form['email']
         #arrive_date= request.form['arrive_date']
-        print(f_name)
         dep_date= request.form['dep_date']
         count= request.form['count']
         #id= request.form['pack']
+        # if f_name=="" or l_name=="" or phone=="" or email=="" or dep_date==""or count=="" or id=="":
         if f_name=="" or l_name=="" or phone=="" or email=="" or dep_date==""  or count=="":
             flash("Fields shouldnt be left empty")
             return redirect(url_for('booking',pid=pid))
         
-
         s=row.subheading
         a=0
         for i, c in enumerate(s):
@@ -122,23 +125,23 @@ def booking(pid):
             break
         c=int(c)
         
-        date=dep_date
-        #date = datetime.datetime(dep_date)
-        """
-        for i in range(c): 
-            date += datetime.timedelta(days=1)
-        print(date)
-        """
+        date=datetime.strptime(dep_date,'%Y-%m-%d')
+        dep_date=date
+
+        #for i in range(c): 
+        #   date += datetime.timedelta(days=1)
+        #print(date)
+
+        
         arrive_date = date
         #date_after_month = datetime.now()+ relativedelta(day=1)
-
-        price=count*row.price
-        #price='67687'
-        print(price)
+        p=int(row.price)
+        count=int(count)
+        price=count*p
         book=booking_details(first_name=f_name,last_name=l_name,people_count=count,email=email,phone=phone,package_title=row.title,period=row.subheading,dep_date=dep_date,arrival_date=arrive_date,price=price)
         db.session.add(book)
         db.session.commit()
-        return render_template('/confirmpage.html')
+        return redirect(f"/process_mail/{f_name}/{l_name}/{email}/{phone}")
         """except:
             #print("error")
             flash("Something went wrong!!!")
@@ -146,6 +149,18 @@ def booking(pid):
         #return redirect("/booking/pid")
     else:
         return render_template("/booking.html",res=l)
+
+app.config.update(dict(MAIL_SERVER = 'smtp.googlemail.com',MAIL_PORT = '465'
+,MAIL_USE_TLS = 'False',MAIL_USE_SSL = 'True',MAIL_USERNAME = 'testflaskmail25@gmail.com',MAIL_PASSWORD = ['Test@123']))
+mail =  Mail(app)
+
+@app.route('/process_mail/<string:email>/<string:f_name>/<string:l_name>/<int:phone>',methods=['POST','GET'])
+def process_mail(email, f_name,l_name,phone):
+        msg = Message('Test',sender='testflaskmail25@gmail.com',recipients=['email'])
+        msg.body = f"Your enquriy Details: Name {f_name} {l_name}, {email}, {phone}"
+        mail.send(msg)
+        return render_template('confirmpage.html',email = email)
+
 
 @app.route('/admin_login',methods=['POST','GET'])
 def admin_login():
@@ -193,6 +208,8 @@ def packdetails(pid):
             db.session.delete(row)
             db.session.commit()
             return redirect('/admin_dashboard')
+        if request.form.get("cancel"):
+            return redirect("/admin_dashboard")
         return render_template("/dashdetails.html")
     else:
         return render_template("/admin_login.html")
@@ -258,6 +275,8 @@ def admin_citydetails(pid):
             return redirect('/admin_city')
         if request.form.get("new"):
             return render_template("/add_newcity.html")
+        if request.form.get("cancel"):
+            return redirect("/admin_city")
         return render_template("/admin.html")
     else:
         return render_template("/admin_login.html")

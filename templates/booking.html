@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-    
+
 
     <title>Enquiry form</title>
     <meta name="description" content="">
@@ -26,20 +26,17 @@
 
     <script src="/static/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     <script src="/static/js/carousel.js"></script>
-    
+
     <style>
         html,
         body {
             width: 100%;
-            height: 60vh;  
+            height: 60vh;
             background-image: url('/static/img/first.jpg');
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
         }
-
-        
-        
     </style>
 </head>
 
@@ -47,61 +44,62 @@
 <body>
     <div class="container">
         <div class="form">
-            <form action="/booking/{{res[0]}}" method="post">
-        <h1 class="heading">Enquiry Form</h1><hr class="line"/>
-            <div class="form-content">
-                <div class="package">
-                    <h1 class="pack-name">{{res[1]}}</h1>
-                    <h3 class="pack-day">{{res[2]}}</h3>
-                </div>
-               <!--  {% with issue=get_flashed_messages() %} {% if issue %} {% for i in issue %}
+            <form action="/booking/{{res[0]}}" method="POST">
+                <h1 class="heading">Enquiry Form</h1>
+                <hr class="line" />
+                <div class="form-content">
+                    <div class="package">
+                        <h1 class="pack-name">{{res[1]}}</h1>
+                        <h3 class="pack-day">{{res[2]}}</h3>
+                    </div>
+                    <!--  {% with issue=get_flashed_messages() %} {% if issue %} {% for i in issue %}
 
 <h1 class="issue"> {{i}} </h1>
 {% endfor %} {% endif %} {% endwith %} -->
-                <div class="contents row">
-                    <div class="name col-xl-6 col-xs-12">
-                    <h4>First name</h4><input type="text" name="f_name" class="content" placeholder="First name" required>
+                    <div class="contents row">
+                        <div class="name col-xl-6 col-xs-12">
+                            <h4>First name</h4><input type="text" name="f_name" class="content" placeholder="First name" required>
+                        </div>
+                        <div class="name col-xl-6 col-xs-12">
+                            <h4>Last name</h4><input type="text" name="l_name" class="content" placeholder="Last name" required>
+                        </div>
                     </div>
-                    <div class="name col-xl-6 col-xs-12">
-                    <h4>Last name</h4><input type="text" name="l_name" class="content" placeholder="Last name" required>
+                    <div class="contents row">
+                        <div class="contact col-xl-6 col-sm-12 col-xs-12">
+                            <h4>Email</h4><input type="text" name="email" class="content" placeholder="Email" required>
+                        </div>
+                        <div class="contact col-xl-6 col-sm-12 col-xs-12">
+                            <h4>Phone no.</h4><input type="text" name="phone" class="content" placeholder="Phone no." required>
+                        </div>
                     </div>
-                </div>
-                <div class="contents row" >
-                    <div class="contact col-xl-6 col-sm-12 col-xs-12">
-                        <h4>Email</h4><input type="text" name="email" class="content" placeholder="Email" required>
-                    </div>
-                    <div class="contact col-xl-6 col-sm-12 col-xs-12">
-                        <h4>Phone no.</h4><input type="text" name="phone" class="content" placeholder="Phone no." required>
-                    </div>
-                </div>
-                <div class="contents row">    
-                    <div class="time col-xl-6 col-sm-12 col-xs-12">
-                        <h4>Departure Time</h4><input type="date" name="dep_date" class="content" placeholder="Departure Time" required>
-                    </div>
-                    <!-- <div class="time col-xl-6 col-sm-12 col-xs-12">
+                    <div class="contents row">
+                        <div class="time col-xl-6 col-sm-12 col-xs-12">
+                            <h4>Departure Time</h4><input type="date" name="dep_date" class="content" placeholder="Departure Time" required>
+                        </div>
+                        <!-- <div class="time col-xl-6 col-sm-12 col-xs-12">
                         <h4>Arrival Time</h4><input type="date" name="arrive_date" class="content" placeholder="Arrival Time">
                     </div> 
                 </div>
                 <div class="contents row">    -->
-                    <div class="other col-xl-6 col-sm-12 col-xs-12">
-                        <h4>No. of People</h4><input type="text" name="count" class="content" placeholder="No. of People">
-                    </div>
-                    <!-- <div class="other col-xl-6 col-sm-12 col-xs-12">
+                        <div class="other col-xl-6 col-sm-12 col-xs-12">
+                            <h4>No. of People</h4><input type="text" name="count" class="content" placeholder="No. of People">
+                        </div>
+                        <!-- <div class="other col-xl-6 col-sm-12 col-xs-12">
                         <h4>ID Proof</h4>
                         <select id="pack" class="content" name="pack">
                             <option value="PAN Card">PAN Card</option>
                             <option value="Aadhar Card">Aadhar Card</option>
                         </select>
                     </div> -->
-                </div>
-                <div class="contents row col-12">
-                <button class="button-sub"><h3>Enquiry Now ( $ 450)</h3></button>
-                </div>
+                    </div>
+                    <div class="contents row col-12">
+                        <button class="button-sub" type="submit"><h3>Enquiry Now ( $ 450)</h3></button>
+                    </div>
 
-            </div>
+                </div>
             </form>
         </div>
-        
+
     </div>
 
 
@@ -113,8 +111,8 @@
     <script src="/static/js/vendor/bootstrap.min.js"></script>
     <script src="/static/js/plugins.js"></script>
     <script src="/static/js/main.js"></script>
- 
-   
+
+
 
 
 </body>
