@@ -9,15 +9,17 @@ import hashlib
 from datetime import datetime,timedelta
 import random
 from datetime import datetime
+
 from dateutil.relativedelta import relativedelta
 from flask_mail import Mail,Message
+from mailer import send_email
 
 
 app = Flask(__name__)
 #Con = MySQLdb.Connect(host="184.168.96.123", port=3306, user="sid86", passwd="siddharth18", db="untouched_destination")
 # app.config ['SQLALCHEMY_DATABASE_URI'] = "mysql://sid86:siddharth18@184.168.96.123/untouched_destination"
-#app.config ['SQLALCHEMY_DATABASE_URI'] = "sqlite:///data.sqlite"
-app.config ['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///travel1.db'
+app.config ['SQLALCHEMY_DATABASE_URI'] = "sqlite:///data1.db"
+#app.config ['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///travel1.db'
 #app.config ['SQLALCHEMY_DATABASE_URI'] = Con
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.config["SECRET_KEY"] = 'TPmi4aLWRbyVq8zu9v82dWYW1'
@@ -38,6 +40,7 @@ class booking_details(db.Model):
     dep_date=db.Column(db.Date)
     arrival_date=db.Column(db.Date)
     price=db.Column(db.Integer)
+    no_of_days=db.Column(db.Integer)
     #id_proof=db.Column(db.String(150))
     def __repr___(self):
         return '<Task %r>' % self.id
@@ -57,7 +60,7 @@ class details(db.Model):
     img=db.Column(db.String(100))
     subheading=db.Column(db.String(100))
     body=db.Column(db.String(100))
-    
+    no_of_days=db.Column(db.Integer)
     def __repr___(self):
         return '<Task %r>' % self.id        
 
@@ -102,65 +105,44 @@ def package_(pid):
 def booking(pid):
     l=[]
     row=details.query.filter_by(id=pid).first()
-    l.extend([row.id,row.title,row.subheading])
+    l.extend([row.id,row.title,row.subheading,row.no_of_days])
     if 'f_name' in request.form and 'l_name' in request.form and 'phone' in request.form and 'email' in request.form and 'dep_date' in request.form and 'count' in request.form :
         f_name= request.form['f_name']
         l_name= request.form['l_name']
         phone= request.form['phone']
         email= request.form['email']
-        #arrive_date= request.form['arrive_date']
         dep_date= request.form['dep_date']
         count= request.form['count']
-        #id= request.form['pack']
-        # if f_name=="" or l_name=="" or phone=="" or email=="" or dep_date==""or count=="" or id=="":
         if f_name=="" or l_name=="" or phone=="" or email=="" or dep_date==""  or count=="":
             flash("Fields shouldnt be left empty")
             return redirect(url_for('booking',pid=pid))
-        
         s=row.subheading
+        """
         a=0
         for i, c in enumerate(s):
             if a<2 and c.isdigit():
                 a+=1
             break
         c=int(c)
-        
+        """
         date=datetime.strptime(dep_date,'%Y-%m-%d')
         dep_date=date
-
+        c=row.no_of_days
         #for i in range(c): 
         #   date += datetime.timedelta(days=1)
         #print(date)
-
-        
         arrive_date = date
         #date_after_month = datetime.now()+ relativedelta(day=1)
         p=int(row.price)
         count=int(count)
         price=count*p
-        book=booking_details(first_name=f_name,last_name=l_name,people_count=count,email=email,phone=phone,package_title=row.title,period=row.subheading,dep_date=dep_date,arrival_date=arrive_date,price=price)
+        book=booking_details(first_name=f_name,last_name=l_name,people_count=count,email=email,phone=phone,package_title=row.title,period=row.subheading,dep_date=dep_date,arrival_date=arrive_date,price=price,no_of_days=row.no_of_days)
         db.session.add(book)
         db.session.commit()
-        return redirect(f"/process_mail/{f_name}/{l_name}/{email}/{phone}")
-        """except:
-            #print("error")
-            flash("Something went wrong!!!")
-        """
-        #return redirect("/booking/pid")
+        send_email(email,f_name,l_name,phone)
+        return render_template('confirmpage.html',email=email)
     else:
         return render_template("/booking.html",res=l)
-
-app.config.update(dict(MAIL_SERVER = 'smtp.googlemail.com',MAIL_PORT = '465'
-,MAIL_USE_TLS = 'False',MAIL_USE_SSL = 'True',MAIL_USERNAME = 'testflaskmail25@gmail.com',MAIL_PASSWORD = ['Test@123']))
-mail =  Mail(app)
-
-@app.route('/process_mail/<string:email>/<string:f_name>/<string:l_name>/<int:phone>',methods=['POST','GET'])
-def process_mail(email, f_name,l_name,phone):
-        msg = Message('Test',sender='testflaskmail25@gmail.com',recipients=['email'])
-        msg.body = f"Your enquriy Details: Name {f_name} {l_name}, {email}, {phone}"
-        mail.send(msg)
-        return render_template('confirmpage.html',email = email)
-
 
 @app.route('/admin_login',methods=['POST','GET'])
 def admin_login():
