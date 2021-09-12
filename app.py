@@ -129,8 +129,8 @@ def booking(pid):
         date=datetime.strptime(dep_date,'%Y-%m-%d')
         dep_date=date
         c=row.no_of_days
-        #for i in range(c): 
-        #   date += datetime.timedelta(days=1)
+        
+        date += timedelta(days=c)
         #print(date)
         arrive_date = date
         #date_after_month = datetime.now()+ relativedelta(day=1)
@@ -140,7 +140,7 @@ def booking(pid):
         book=booking_details(first_name=f_name,last_name=l_name,people_count=count,email=email,phone=phone,package_title=row.title,period=row.subheading,dep_date=dep_date,arrival_date=arrive_date,price=price,no_of_days=row.no_of_days)
         db.session.add(book)
         db.session.commit()
-        send_email(email,f_name,l_name,phone)
+        send_email(email,f_name,l_name,phone,dep_date,count)
         return render_template('confirmpage.html',email=email),{"Refresh": "5; url='/'"}
     else:
         return render_template("/booking.html",res=l)

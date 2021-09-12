@@ -249,7 +249,7 @@
                                     <form method="post" action="/admin_citydetails/{{row[0]}}">
                                     <td><button style="background-color: black; color: azure; border-radius: 5px;" name="edit" value="edit" >Edit</button>
                                       <button class="start-btn" style="background-color: #ff5757; color: azure; border-radius: 5px;"><a href="#"> Delete </a></button></td>
-                                    </form>
+                                    
                                     </div>
                                     
                                   </tr>
@@ -259,8 +259,9 @@
                                        <p>
                                           Are You Sure You Want To Continue!!
                                        </p>
-                                       <form method="post" action="/admin_citydetails/{{row[0]}}" >
-                                       <button class="ok" type="submit" name="delete" value="delete">ok</button>
+                                       <!--<form method="post" action="/admin_citydetails/{{row[0]}}" >
+                                        {{row[0]}}-->
+                                       <button class="ok"  name="delete" value="delete">ok</button>
                                        <a href="/admin_city"><button name="cancel" value="cancel" class="cancel">cancel</button></a>
                                        </form>
                                        
