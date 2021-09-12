@@ -83,6 +83,7 @@ def enquiry_form():
 def package_details(name):
     l=[]
     stm=details.query.filter_by(title=name).first()
+    print(stm)
     a=(450,600,500,300,250)
     p=int(stm.price)
     c=random.choice(a)+p
