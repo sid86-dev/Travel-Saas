@@ -141,7 +141,7 @@ def booking(pid):
         db.session.add(book)
         db.session.commit()
         send_email(email,f_name,l_name,phone)
-        return render_template('confirmpage.html',email=email)
+        return render_template('confirmpage.html',email=email),{"Refresh": "5; url='/'"}
     else:
         return render_template("/booking.html",res=l)
 
@@ -171,7 +171,7 @@ def admin_dasboard():
         l=[]
         result=[]
         for stm in rows:
-            l.extend([stm.id,stm.title,stm.price,stm.location,stm.img,stm.subheading,stm.body])
+            l.extend([stm.id,stm.title,stm.price,stm.location,stm.img,stm.subheading,stm.body,stm.no_of_days])
             result.append(l)
             l=[]
     else:
@@ -184,7 +184,7 @@ def packdetails(pid):
         if request.form.get("edit"):
             l=[]
             stm=details.query.filter_by(id=pid).first()
-            l.extend([stm.id,stm.title,stm.price,stm.location,stm.img,stm.subheading,stm.body])
+            l.extend([stm.id,stm.title,stm.price,stm.location,stm.img,stm.subheading,stm.body,stm.no_of_days])
             return render_template("/editform_detail.html",res=l)
         if request.form.get("delete"):
             row=details.query.filter_by(id=pid).first()
@@ -207,7 +207,8 @@ def admin_addpackage():
         subheading= request.form['subheading']
         location= request.form['location']
         body= request.form['body']
-        row=details(title=name,price=price,location=location,img=img,subheading=subheading,body=body)
+        num= request.form['num']
+        row=details(title=name,price=price,location=location,img=img,subheading=subheading,body=body,no_of_days=num)
         db.session.add(row)
         db.session.commit()
         return redirect("/admin_dashboard")
@@ -223,6 +224,7 @@ def admin_editpackage(pid):
         row.subheading= request.form['subheading']
         row.location= request.form['location']
         row.body= request.form['body']
+        row.no_of_days= request.form['num']
         db.session.commit()
         return redirect("/admin_dashboard")
     return render_template("/editform_detail.html")
