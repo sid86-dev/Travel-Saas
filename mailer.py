@@ -11,13 +11,6 @@ def send_email(email, f_name,l_name,phone,dep_date,count):
     msg['To'] = email
     #subject in line 12
     msg['Subject'] = f"Booking for {f_name} "
-    # content in line 14
-    #msg.set_content(f""" Dear {f_name} {l_name},
-    #Thank you for visiting TRAVELWEB UntouchedDestination.
-    #Our team will contact you as soon as.
-    #Please Check Your Detail :
-    #Your name: {f_name} {l_name} \n Phone: {phone} \n Departure Time : {dep_date} \n Number of People : {count} \n""")
-
     html = f"""/
     <html>
         <body>
@@ -35,10 +28,6 @@ def send_email(email, f_name,l_name,phone,dep_date,count):
     part = MIMEText(html, "html")
     msg.set_content(part)
 
-    #html content in line 17
-#   msg.add_alternative("""\
-#              html content here 
-# """, subtype='html')
 
 
     with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
